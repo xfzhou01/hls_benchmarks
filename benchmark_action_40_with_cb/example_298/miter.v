@@ -1,0 +1,1023 @@
+// Processed by function `construct_kairos` in `verilog_tricks.py`.
+// Machine A:
+// Processed by function `add_clk_enable_signal` in `verilog_tricks.py`.
+// Processed by function `remove_reset_signal` in `verilog_tricks.py`.
+module top_A (
+  ap_clk,
+  ap_start,
+  ap_done,
+  ap_idle,
+  ap_ready,
+  op_0,
+  op_3,
+  op_6,
+  op_8,
+  op_9,
+  op_15,
+  op_15_ap_vld,
+clk_enable
+);
+input clk_enable;
+
+
+input ap_clk;
+wire ap_rst;
+assign ap_rst = op_15_ap_vld;
+input ap_start;
+input [3:0] op_0;
+input [3:0] op_3;
+input [7:0] op_6;
+input [3:0] op_8;
+input [15:0] op_9;
+output ap_done;
+output ap_idle;
+output ap_ready;
+output [31:0] op_15;
+output op_15_ap_vld;
+
+
+reg [8:0] \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.ain_s1 ;
+reg [8:0] \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.bin_s1 ;
+reg \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.carry_s1 ;
+reg [7:0] \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.sum_s1 ;
+reg [8:0] \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.ain_s1 ;
+reg [8:0] \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.bin_s1 ;
+reg \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.carry_s1 ;
+reg [7:0] \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.sum_s1 ;
+reg [2:0] \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.ain_s1 ;
+reg [2:0] \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.bin_s1 ;
+reg \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.carry_s1 ;
+reg [2:0] \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.sum_s1 ;
+reg [3:0] \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.ain_s1 ;
+reg [3:0] \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.bin_s1 ;
+reg \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.carry_s1 ;
+reg [2:0] \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.sum_s1 ;
+reg [3:0] \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.ain_s1 ;
+reg [3:0] \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.bin_s1 ;
+reg \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.carry_s1 ;
+reg [3:0] \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.sum_s1 ;
+reg [16:0] add_ln69_reg_305;
+reg [13:0] ap_CS_fsm = 14'h0001;
+reg icmp_ln851_reg_250;
+reg [5:0] op_12_V_reg_280;
+reg [1:0] r_reg_227;
+reg [5:0] ret_V_1_reg_255;
+reg [6:0] ret_V_4_reg_300;
+reg [5:0] select_ln850_1_reg_265;
+reg [5:0] sext_ln835_reg_243;
+reg [1:0] \shl_4ns_2ns_4_7_1_U1.din1_cast_array[0] ;
+reg [1:0] \shl_4ns_2ns_4_7_1_U1.din1_cast_array[1] ;
+reg [1:0] \shl_4ns_2ns_4_7_1_U1.din1_cast_array[2] ;
+reg [1:0] \shl_4ns_2ns_4_7_1_U1.din1_cast_array[3] ;
+reg [1:0] \shl_4ns_2ns_4_7_1_U1.din1_cast_array[4] ;
+reg [1:0] \shl_4ns_2ns_4_7_1_U1.din1_cast_array[5] ;
+reg [3:0] \shl_4ns_2ns_4_7_1_U1.dout_array[0] ;
+reg [3:0] \shl_4ns_2ns_4_7_1_U1.dout_array[1] ;
+reg [3:0] \shl_4ns_2ns_4_7_1_U1.dout_array[2] ;
+reg [3:0] \shl_4ns_2ns_4_7_1_U1.dout_array[3] ;
+reg [3:0] \shl_4ns_2ns_4_7_1_U1.dout_array[4] ;
+reg [3:0] \shl_4ns_2ns_4_7_1_U1.dout_array[5] ;
+reg [3:0] shl_ln781_reg_260;
+wire [16:0] _000_;
+wire [13:0] _001_;
+wire _002_;
+wire [5:0] _003_;
+wire [1:0] _004_;
+wire [5:0] _005_;
+wire [6:0] _006_;
+wire [5:0] _007_;
+wire [5:0] _008_;
+wire [3:0] _009_;
+wire [1:0] _010_;
+wire _011_;
+wire _012_;
+wire _013_;
+wire _014_;
+wire [8:0] _015_;
+wire [8:0] _016_;
+wire _017_;
+wire [7:0] _018_;
+wire [8:0] _019_;
+wire [9:0] _020_;
+wire [8:0] _021_;
+wire [8:0] _022_;
+wire _023_;
+wire [7:0] _024_;
+wire [8:0] _025_;
+wire [9:0] _026_;
+wire [2:0] _027_;
+wire [2:0] _028_;
+wire _029_;
+wire [2:0] _030_;
+wire [3:0] _031_;
+wire [3:0] _032_;
+wire [3:0] _033_;
+wire [3:0] _034_;
+wire _035_;
+wire [2:0] _036_;
+wire [3:0] _037_;
+wire [4:0] _038_;
+wire [3:0] _039_;
+wire [3:0] _040_;
+wire _041_;
+wire [3:0] _042_;
+wire [4:0] _043_;
+wire [4:0] _044_;
+wire [1:0] _045_;
+wire [1:0] _046_;
+wire [1:0] _047_;
+wire [1:0] _048_;
+wire [1:0] _049_;
+wire [1:0] _050_;
+wire [3:0] _051_;
+wire [3:0] _052_;
+wire [3:0] _053_;
+wire [3:0] _054_;
+wire [3:0] _055_;
+wire [3:0] _056_;
+wire [1:0] _057_;
+wire [3:0] _058_;
+wire [1:0] _059_;
+wire [3:0] _060_;
+wire [1:0] _061_;
+wire [3:0] _062_;
+wire [1:0] _063_;
+wire [3:0] _064_;
+wire [1:0] _065_;
+wire [3:0] _066_;
+wire [1:0] _067_;
+wire [3:0] _068_;
+wire [3:0] _069_;
+wire _070_;
+wire _071_;
+wire _072_;
+wire _073_;
+wire _074_;
+wire _075_;
+wire _076_;
+wire _077_;
+wire _078_;
+wire _079_;
+wire _080_;
+wire _081_;
+wire _082_;
+wire _083_;
+wire \add_17ns_17s_17_2_1_U6.ce ;
+wire \add_17ns_17s_17_2_1_U6.clk ;
+wire [16:0] \add_17ns_17s_17_2_1_U6.din0 ;
+wire [16:0] \add_17ns_17s_17_2_1_U6.din1 ;
+wire [16:0] \add_17ns_17s_17_2_1_U6.dout ;
+wire \add_17ns_17s_17_2_1_U6.reset ;
+wire [16:0] \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.a ;
+wire [16:0] \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.ain_s0 ;
+wire [16:0] \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.b ;
+wire [16:0] \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.bin_s0 ;
+wire \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.ce ;
+wire \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.clk ;
+wire \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.facout_s1 ;
+wire \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.facout_s2 ;
+wire [7:0] \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.fas_s1 ;
+wire [8:0] \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.fas_s2 ;
+wire \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.reset ;
+wire [16:0] \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.s ;
+wire [7:0] \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.u1.a ;
+wire [7:0] \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.u1.b ;
+wire \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.u1.cin ;
+wire \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.u1.cout ;
+wire [7:0] \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.u1.s ;
+wire [8:0] \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.u2.a ;
+wire [8:0] \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.u2.b ;
+wire \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.u2.cin ;
+wire \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.u2.cout ;
+wire [8:0] \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.u2.s ;
+wire \add_17s_17ns_17_2_1_U5.ce ;
+wire \add_17s_17ns_17_2_1_U5.clk ;
+wire [16:0] \add_17s_17ns_17_2_1_U5.din0 ;
+wire [16:0] \add_17s_17ns_17_2_1_U5.din1 ;
+wire [16:0] \add_17s_17ns_17_2_1_U5.dout ;
+wire \add_17s_17ns_17_2_1_U5.reset ;
+wire [16:0] \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.a ;
+wire [16:0] \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.ain_s0 ;
+wire [16:0] \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.b ;
+wire [16:0] \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.bin_s0 ;
+wire \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.ce ;
+wire \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.clk ;
+wire \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.facout_s1 ;
+wire \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.facout_s2 ;
+wire [7:0] \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.fas_s1 ;
+wire [8:0] \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.fas_s2 ;
+wire \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.reset ;
+wire [16:0] \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.s ;
+wire [7:0] \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.u1.a ;
+wire [7:0] \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.u1.b ;
+wire \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.u1.cin ;
+wire \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.u1.cout ;
+wire [7:0] \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.u1.s ;
+wire [8:0] \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.u2.a ;
+wire [8:0] \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.u2.b ;
+wire \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.u2.cin ;
+wire \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.u2.cout ;
+wire [8:0] \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.u2.s ;
+wire \add_6s_6ns_6_2_1_U2.ce ;
+wire \add_6s_6ns_6_2_1_U2.clk ;
+wire [5:0] \add_6s_6ns_6_2_1_U2.din0 ;
+wire [5:0] \add_6s_6ns_6_2_1_U2.din1 ;
+wire [5:0] \add_6s_6ns_6_2_1_U2.dout ;
+wire \add_6s_6ns_6_2_1_U2.reset ;
+wire [5:0] \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.a ;
+wire [5:0] \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.ain_s0 ;
+wire [5:0] \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.b ;
+wire [5:0] \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.bin_s0 ;
+wire \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.ce ;
+wire \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.clk ;
+wire \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.facout_s1 ;
+wire \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.facout_s2 ;
+wire [2:0] \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.fas_s1 ;
+wire [2:0] \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.fas_s2 ;
+wire \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.reset ;
+wire [5:0] \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.s ;
+wire [2:0] \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.u1.a ;
+wire [2:0] \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.u1.b ;
+wire \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.u1.cin ;
+wire \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.u1.cout ;
+wire [2:0] \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.u1.s ;
+wire [2:0] \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.u2.a ;
+wire [2:0] \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.u2.b ;
+wire \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.u2.cin ;
+wire \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.u2.cout ;
+wire [2:0] \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.u2.s ;
+wire \add_7s_7s_7_2_1_U4.ce ;
+wire \add_7s_7s_7_2_1_U4.clk ;
+wire [6:0] \add_7s_7s_7_2_1_U4.din0 ;
+wire [6:0] \add_7s_7s_7_2_1_U4.din1 ;
+wire [6:0] \add_7s_7s_7_2_1_U4.dout ;
+wire \add_7s_7s_7_2_1_U4.reset ;
+wire [6:0] \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.a ;
+wire [6:0] \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.ain_s0 ;
+wire [6:0] \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.b ;
+wire [6:0] \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.bin_s0 ;
+wire \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.ce ;
+wire \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.clk ;
+wire \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.facout_s1 ;
+wire \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.facout_s2 ;
+wire [2:0] \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.fas_s1 ;
+wire [3:0] \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.fas_s2 ;
+wire \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.reset ;
+wire [6:0] \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.s ;
+wire [2:0] \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.u1.a ;
+wire [2:0] \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.u1.b ;
+wire \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.u1.cin ;
+wire \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.u1.cout ;
+wire [2:0] \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.u1.s ;
+wire [3:0] \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.u2.a ;
+wire [3:0] \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.u2.b ;
+wire \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.u2.cin ;
+wire \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.u2.cout ;
+wire [3:0] \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.u2.s ;
+wire \add_8ns_8s_8_2_1_U3.ce ;
+wire \add_8ns_8s_8_2_1_U3.clk ;
+wire [7:0] \add_8ns_8s_8_2_1_U3.din0 ;
+wire [7:0] \add_8ns_8s_8_2_1_U3.din1 ;
+wire [7:0] \add_8ns_8s_8_2_1_U3.dout ;
+wire \add_8ns_8s_8_2_1_U3.reset ;
+wire [7:0] \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.a ;
+wire [7:0] \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.ain_s0 ;
+wire [7:0] \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.b ;
+wire [7:0] \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.bin_s0 ;
+wire \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.ce ;
+wire \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.clk ;
+wire \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.facout_s1 ;
+wire \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.facout_s2 ;
+wire [3:0] \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.fas_s1 ;
+wire [3:0] \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.fas_s2 ;
+wire \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.reset ;
+wire [7:0] \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.s ;
+wire [3:0] \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.u1.a ;
+wire [3:0] \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.u1.b ;
+wire \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.u1.cin ;
+wire \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.u1.cout ;
+wire [3:0] \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.u1.s ;
+wire [3:0] \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.u2.a ;
+wire [3:0] \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.u2.b ;
+wire \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.u2.cin ;
+wire \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.u2.cout ;
+wire [3:0] \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.u2.s ;
+wire ap_CS_fsm_state1;
+wire ap_CS_fsm_state10;
+wire ap_CS_fsm_state11;
+wire ap_CS_fsm_state12;
+wire ap_CS_fsm_state13;
+wire ap_CS_fsm_state14;
+wire ap_CS_fsm_state2;
+wire ap_CS_fsm_state6;
+wire ap_CS_fsm_state7;
+wire ap_CS_fsm_state8;
+wire ap_CS_fsm_state9;
+wire [13:0] ap_NS_fsm;
+wire ap_clk;
+wire ap_done;
+wire ap_idle;
+wire ap_ready;
+wire ap_rst;
+wire ap_start;
+wire [1:0] empty_fu_91_p1;
+wire [3:0] grp_fu_104_p2;
+wire [5:0] grp_fu_134_p0;
+wire [5:0] grp_fu_134_p2;
+wire [7:0] grp_fu_175_p0;
+wire [7:0] grp_fu_175_p1;
+wire [7:0] grp_fu_175_p2;
+wire [6:0] grp_fu_198_p0;
+wire [6:0] grp_fu_198_p1;
+wire [6:0] grp_fu_198_p2;
+wire [16:0] grp_fu_208_p0;
+wire [16:0] grp_fu_208_p2;
+wire [16:0] grp_fu_217_p1;
+wire [16:0] grp_fu_217_p2;
+wire icmp_ln851_fu_128_p2;
+wire [3:0] op_0;
+wire [31:0] op_15;
+wire op_15_ap_vld;
+wire [3:0] op_3;
+wire [7:0] op_6;
+wire [3:0] op_7_V_fu_159_p2;
+wire [3:0] op_8;
+wire [15:0] op_9;
+wire p_Result_s_fu_140_p3;
+wire [1:0] r_fu_95_p2;
+wire [4:0] ret_V_fu_110_p4;
+wire [5:0] select_ln850_1_fu_152_p3;
+wire [5:0] select_ln850_fu_147_p3;
+wire [5:0] sext_ln835_fu_120_p1;
+wire \shl_4ns_2ns_4_7_1_U1.ce ;
+wire \shl_4ns_2ns_4_7_1_U1.clk ;
+wire [3:0] \shl_4ns_2ns_4_7_1_U1.din0 ;
+wire [3:0] \shl_4ns_2ns_4_7_1_U1.din1 ;
+wire [1:0] \shl_4ns_2ns_4_7_1_U1.din1_cast ;
+wire [1:0] \shl_4ns_2ns_4_7_1_U1.din1_mask ;
+wire [3:0] \shl_4ns_2ns_4_7_1_U1.dout ;
+wire \shl_4ns_2ns_4_7_1_U1.reset ;
+wire [2:0] trunc_ln851_fu_124_p1;
+wire [3:0] zext_ln9_fu_101_p1;
+
+
+assign _011_ = ap_CS_fsm[0] & _013_;
+assign _012_ = ap_CS_fsm[0] & ap_start;
+assign r_fu_95_p2 = ~ op_0[1:0];
+assign _013_ = ~ ap_start;
+assign _014_ = ! op_6[2:0];
+always @(posedge \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.clk )
+\add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.bin_s1  <= _016_;
+always @(posedge \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.clk )
+\add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.ain_s1  <= _015_;
+always @(posedge \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.clk )
+\add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.sum_s1  <= _018_;
+always @(posedge \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.clk )
+\add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.carry_s1  <= _017_;
+assign _016_ = \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.ce  ? \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.b [16:8] : \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.bin_s1 ;
+assign _015_ = \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.ce  ? \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.a [16:8] : \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.ain_s1 ;
+assign _017_ = \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.ce  ? \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.facout_s1  : \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.carry_s1 ;
+assign _018_ = \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.ce  ? \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.fas_s1  : \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.sum_s1 ;
+assign _019_ = \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.u1.a  + \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.u1.b ;
+assign { \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.u1.cout , \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.u1.s  } = _019_ + \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.u1.cin ;
+assign _020_ = \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.u2.a  + \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.u2.b ;
+assign { \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.u2.cout , \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.u2.s  } = _020_ + \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.u2.cin ;
+always @(posedge \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.clk )
+\add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.bin_s1  <= _022_;
+always @(posedge \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.clk )
+\add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.ain_s1  <= _021_;
+always @(posedge \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.clk )
+\add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.sum_s1  <= _024_;
+always @(posedge \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.clk )
+\add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.carry_s1  <= _023_;
+assign _022_ = \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.ce  ? \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.b [16:8] : \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.bin_s1 ;
+assign _021_ = \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.ce  ? \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.a [16:8] : \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.ain_s1 ;
+assign _023_ = \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.ce  ? \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.facout_s1  : \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.carry_s1 ;
+assign _024_ = \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.ce  ? \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.fas_s1  : \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.sum_s1 ;
+assign _025_ = \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.u1.a  + \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.u1.b ;
+assign { \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.u1.cout , \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.u1.s  } = _025_ + \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.u1.cin ;
+assign _026_ = \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.u2.a  + \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.u2.b ;
+assign { \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.u2.cout , \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.u2.s  } = _026_ + \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.u2.cin ;
+always @(posedge \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.clk )
+\add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.bin_s1  <= _028_;
+always @(posedge \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.clk )
+\add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.ain_s1  <= _027_;
+always @(posedge \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.clk )
+\add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.sum_s1  <= _030_;
+always @(posedge \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.clk )
+\add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.carry_s1  <= _029_;
+assign _028_ = \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.ce  ? \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.b [5:3] : \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.bin_s1 ;
+assign _027_ = \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.ce  ? \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.a [5:3] : \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.ain_s1 ;
+assign _029_ = \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.ce  ? \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.facout_s1  : \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.carry_s1 ;
+assign _030_ = \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.ce  ? \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.fas_s1  : \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.sum_s1 ;
+assign _031_ = \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.u1.a  + \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.u1.b ;
+assign { \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.u1.cout , \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.u1.s  } = _031_ + \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.u1.cin ;
+assign _032_ = \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.u2.a  + \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.u2.b ;
+assign { \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.u2.cout , \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.u2.s  } = _032_ + \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.u2.cin ;
+always @(posedge \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.clk )
+\add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.bin_s1  <= _034_;
+always @(posedge \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.clk )
+\add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.ain_s1  <= _033_;
+always @(posedge \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.clk )
+\add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.sum_s1  <= _036_;
+always @(posedge \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.clk )
+\add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.carry_s1  <= _035_;
+assign _034_ = \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.ce  ? \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.b [6:3] : \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.bin_s1 ;
+assign _033_ = \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.ce  ? \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.a [6:3] : \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.ain_s1 ;
+assign _035_ = \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.ce  ? \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.facout_s1  : \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.carry_s1 ;
+assign _036_ = \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.ce  ? \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.fas_s1  : \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.sum_s1 ;
+assign _037_ = \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.u1.a  + \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.u1.b ;
+assign { \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.u1.cout , \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.u1.s  } = _037_ + \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.u1.cin ;
+assign _038_ = \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.u2.a  + \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.u2.b ;
+assign { \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.u2.cout , \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.u2.s  } = _038_ + \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.u2.cin ;
+always @(posedge \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.clk )
+\add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.bin_s1  <= _040_;
+always @(posedge \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.clk )
+\add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.ain_s1  <= _039_;
+always @(posedge \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.clk )
+\add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.sum_s1  <= _042_;
+always @(posedge \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.clk )
+\add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.carry_s1  <= _041_;
+assign _040_ = \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.ce  ? \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.b [7:4] : \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.bin_s1 ;
+assign _039_ = \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.ce  ? \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.a [7:4] : \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.ain_s1 ;
+assign _041_ = \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.ce  ? \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.facout_s1  : \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.carry_s1 ;
+assign _042_ = \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.ce  ? \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.fas_s1  : \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.sum_s1 ;
+assign _043_ = \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.u1.a  + \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.u1.b ;
+assign { \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.u1.cout , \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.u1.s  } = _043_ + \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.u1.cin ;
+assign _044_ = \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.u2.a  + \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.u2.b ;
+assign { \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.u2.cout , \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.u2.s  } = _044_ + \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.u2.cin ;
+always @(posedge \shl_4ns_2ns_4_7_1_U1.clk )
+\shl_4ns_2ns_4_7_1_U1.dout_array[5]  <= _056_;
+always @(posedge \shl_4ns_2ns_4_7_1_U1.clk )
+\shl_4ns_2ns_4_7_1_U1.din1_cast_array[5]  <= _050_;
+always @(posedge \shl_4ns_2ns_4_7_1_U1.clk )
+\shl_4ns_2ns_4_7_1_U1.dout_array[4]  <= _055_;
+always @(posedge \shl_4ns_2ns_4_7_1_U1.clk )
+\shl_4ns_2ns_4_7_1_U1.din1_cast_array[4]  <= _049_;
+always @(posedge \shl_4ns_2ns_4_7_1_U1.clk )
+\shl_4ns_2ns_4_7_1_U1.dout_array[3]  <= _054_;
+always @(posedge \shl_4ns_2ns_4_7_1_U1.clk )
+\shl_4ns_2ns_4_7_1_U1.din1_cast_array[3]  <= _048_;
+always @(posedge \shl_4ns_2ns_4_7_1_U1.clk )
+\shl_4ns_2ns_4_7_1_U1.dout_array[2]  <= _053_;
+always @(posedge \shl_4ns_2ns_4_7_1_U1.clk )
+\shl_4ns_2ns_4_7_1_U1.din1_cast_array[2]  <= _047_;
+always @(posedge \shl_4ns_2ns_4_7_1_U1.clk )
+\shl_4ns_2ns_4_7_1_U1.dout_array[1]  <= _052_;
+always @(posedge \shl_4ns_2ns_4_7_1_U1.clk )
+\shl_4ns_2ns_4_7_1_U1.din1_cast_array[1]  <= _046_;
+always @(posedge \shl_4ns_2ns_4_7_1_U1.clk )
+\shl_4ns_2ns_4_7_1_U1.dout_array[0]  <= _051_;
+always @(posedge \shl_4ns_2ns_4_7_1_U1.clk )
+\shl_4ns_2ns_4_7_1_U1.din1_cast_array[0]  <= _045_;
+assign _057_ = \shl_4ns_2ns_4_7_1_U1.ce  ? \shl_4ns_2ns_4_7_1_U1.din1_cast_array[4]  : \shl_4ns_2ns_4_7_1_U1.din1_cast_array[5] ;
+assign _050_ = \shl_4ns_2ns_4_7_1_U1.reset  ? 2'h0 : _057_;
+assign _058_ = \shl_4ns_2ns_4_7_1_U1.ce  ? _069_ : \shl_4ns_2ns_4_7_1_U1.dout_array[5] ;
+assign _056_ = \shl_4ns_2ns_4_7_1_U1.reset  ? 4'h0 : _058_;
+assign _059_ = \shl_4ns_2ns_4_7_1_U1.ce  ? \shl_4ns_2ns_4_7_1_U1.din1_cast_array[3]  : \shl_4ns_2ns_4_7_1_U1.din1_cast_array[4] ;
+assign _049_ = \shl_4ns_2ns_4_7_1_U1.reset  ? 2'h0 : _059_;
+assign _060_ = \shl_4ns_2ns_4_7_1_U1.ce  ? \shl_4ns_2ns_4_7_1_U1.dout_array[3]  : \shl_4ns_2ns_4_7_1_U1.dout_array[4] ;
+assign _055_ = \shl_4ns_2ns_4_7_1_U1.reset  ? 4'h0 : _060_;
+assign _061_ = \shl_4ns_2ns_4_7_1_U1.ce  ? \shl_4ns_2ns_4_7_1_U1.din1_cast_array[2]  : \shl_4ns_2ns_4_7_1_U1.din1_cast_array[3] ;
+assign _048_ = \shl_4ns_2ns_4_7_1_U1.reset  ? 2'h0 : _061_;
+assign _062_ = \shl_4ns_2ns_4_7_1_U1.ce  ? \shl_4ns_2ns_4_7_1_U1.dout_array[2]  : \shl_4ns_2ns_4_7_1_U1.dout_array[3] ;
+assign _054_ = \shl_4ns_2ns_4_7_1_U1.reset  ? 4'h0 : _062_;
+assign _063_ = \shl_4ns_2ns_4_7_1_U1.ce  ? \shl_4ns_2ns_4_7_1_U1.din1_cast_array[1]  : \shl_4ns_2ns_4_7_1_U1.din1_cast_array[2] ;
+assign _047_ = \shl_4ns_2ns_4_7_1_U1.reset  ? 2'h0 : _063_;
+assign _064_ = \shl_4ns_2ns_4_7_1_U1.ce  ? \shl_4ns_2ns_4_7_1_U1.dout_array[1]  : \shl_4ns_2ns_4_7_1_U1.dout_array[2] ;
+assign _053_ = \shl_4ns_2ns_4_7_1_U1.reset  ? 4'h0 : _064_;
+assign _065_ = \shl_4ns_2ns_4_7_1_U1.ce  ? \shl_4ns_2ns_4_7_1_U1.din1_cast_array[0]  : \shl_4ns_2ns_4_7_1_U1.din1_cast_array[1] ;
+assign _046_ = \shl_4ns_2ns_4_7_1_U1.reset  ? 2'h0 : _065_;
+assign _066_ = \shl_4ns_2ns_4_7_1_U1.ce  ? \shl_4ns_2ns_4_7_1_U1.dout_array[0]  : \shl_4ns_2ns_4_7_1_U1.dout_array[1] ;
+assign _052_ = \shl_4ns_2ns_4_7_1_U1.reset  ? 4'h0 : _066_;
+assign _067_ = \shl_4ns_2ns_4_7_1_U1.ce  ? \shl_4ns_2ns_4_7_1_U1.din1 [1:0] : \shl_4ns_2ns_4_7_1_U1.din1_cast_array[0] ;
+assign _045_ = \shl_4ns_2ns_4_7_1_U1.reset  ? 2'h0 : _067_;
+assign _068_ = \shl_4ns_2ns_4_7_1_U1.ce  ? \shl_4ns_2ns_4_7_1_U1.din0  : \shl_4ns_2ns_4_7_1_U1.dout_array[0] ;
+assign _051_ = \shl_4ns_2ns_4_7_1_U1.reset  ? 4'h0 : _068_;
+assign _069_ = \shl_4ns_2ns_4_7_1_U1.dout_array[4]  << { \shl_4ns_2ns_4_7_1_U1.din1_cast_array[4] [1], 1'h0 };
+assign \shl_4ns_2ns_4_7_1_U1.dout  = \shl_4ns_2ns_4_7_1_U1.dout_array[5]  << \shl_4ns_2ns_4_7_1_U1.din1_cast_array[5] [0];
+always @(posedge ap_clk)
+shl_ln781_reg_260 <= _009_;
+always @(posedge ap_clk)
+select_ln850_1_reg_265 <= _007_;
+always @(posedge ap_clk)
+ret_V_1_reg_255 <= _005_;
+always @(posedge ap_clk)
+r_reg_227 <= _004_;
+always @(posedge ap_clk)
+op_12_V_reg_280 <= _003_;
+always @(posedge ap_clk)
+sext_ln835_reg_243 <= _008_;
+always @(posedge ap_clk)
+icmp_ln851_reg_250 <= _002_;
+always @(posedge ap_clk)
+ret_V_4_reg_300 <= _006_;
+always @(posedge ap_clk)
+add_ln69_reg_305 <= _000_;
+always @(posedge ap_clk)
+ap_CS_fsm <= _001_;
+assign _010_ = _012_ ? 2'h2 : 2'h1;
+assign _070_ = ap_CS_fsm == 1'h1;
+function [13:0] _199_;
+input [13:0] a;
+input [195:0] b;
+input [13:0] s;
+case (s)
+14'b00000000000001:
+_199_ = b[13:0];
+14'b00000000000010:
+_199_ = b[27:14];
+14'b00000000000100:
+_199_ = b[41:28];
+14'b00000000001000:
+_199_ = b[55:42];
+14'b00000000010000:
+_199_ = b[69:56];
+14'b00000000100000:
+_199_ = b[83:70];
+14'b00000001000000:
+_199_ = b[97:84];
+14'b00000010000000:
+_199_ = b[111:98];
+14'b00000100000000:
+_199_ = b[125:112];
+14'b00001000000000:
+_199_ = b[139:126];
+14'b00010000000000:
+_199_ = b[153:140];
+14'b00100000000000:
+_199_ = b[167:154];
+14'b01000000000000:
+_199_ = b[181:168];
+14'b10000000000000:
+_199_ = b[195:182];
+14'b00000000000000:
+_199_ = a;
+default:
+_199_ = 14'bx;
+endcase
+endfunction
+assign ap_NS_fsm = _199_(14'hxxxx, { 12'h000, _010_, 182'h0004002001000800400200100080040020010008000001 }, { _070_, _083_, _082_, _081_, _080_, _079_, _078_, _077_, _076_, _075_, _074_, _073_, _072_, _071_ });
+assign _071_ = ap_CS_fsm == 14'h2000;
+assign _072_ = ap_CS_fsm == 13'h1000;
+assign _073_ = ap_CS_fsm == 12'h800;
+assign _074_ = ap_CS_fsm == 11'h400;
+assign _075_ = ap_CS_fsm == 10'h200;
+assign _076_ = ap_CS_fsm == 9'h100;
+assign _077_ = ap_CS_fsm == 8'h80;
+assign _078_ = ap_CS_fsm == 7'h40;
+assign _079_ = ap_CS_fsm == 6'h20;
+assign _080_ = ap_CS_fsm == 5'h10;
+assign _081_ = ap_CS_fsm == 4'h8;
+assign _082_ = ap_CS_fsm == 3'h4;
+assign _083_ = ap_CS_fsm == 2'h2;
+assign op_15_ap_vld = ap_CS_fsm[13] ? 1'h1 : 1'h0;
+assign ap_idle = _011_ ? 1'h1 : 1'h0;
+assign _007_ = ap_CS_fsm[7] ? select_ln850_1_fu_152_p3 : select_ln850_1_reg_265;
+assign _009_ = ap_CS_fsm[7] ? grp_fu_104_p2 : shl_ln781_reg_260;
+assign _005_ = ap_CS_fsm[6] ? grp_fu_134_p2 : ret_V_1_reg_255;
+assign _004_ = ap_CS_fsm[0] ? r_fu_95_p2 : r_reg_227;
+assign _003_ = ap_CS_fsm[9] ? grp_fu_175_p2[7:2] : op_12_V_reg_280;
+assign _002_ = ap_CS_fsm[5] ? icmp_ln851_fu_128_p2 : icmp_ln851_reg_250;
+assign _008_ = ap_CS_fsm[5] ? { op_6[7], op_6[7:3] } : sext_ln835_reg_243;
+assign _000_ = ap_CS_fsm[11] ? grp_fu_208_p2 : add_ln69_reg_305;
+assign _006_ = ap_CS_fsm[11] ? grp_fu_198_p2 : ret_V_4_reg_300;
+assign _001_ = ap_rst ? 14'h0001 : ap_NS_fsm;
+assign icmp_ln851_fu_128_p2 = _014_ ? 1'h1 : 1'h0;
+assign select_ln850_1_fu_152_p3 = op_6[7] ? select_ln850_fu_147_p3 : sext_ln835_reg_243;
+assign select_ln850_fu_147_p3 = icmp_ln851_reg_250 ? sext_ln835_reg_243 : ret_V_1_reg_255;
+assign ap_CS_fsm_state1 = ap_CS_fsm[0];
+assign ap_CS_fsm_state10 = ap_CS_fsm[9];
+assign ap_CS_fsm_state11 = ap_CS_fsm[10];
+assign ap_CS_fsm_state12 = ap_CS_fsm[11];
+assign ap_CS_fsm_state13 = ap_CS_fsm[12];
+assign ap_CS_fsm_state14 = ap_CS_fsm[13];
+assign ap_CS_fsm_state2 = ap_CS_fsm[1];
+assign ap_CS_fsm_state6 = ap_CS_fsm[5];
+assign ap_CS_fsm_state7 = ap_CS_fsm[6];
+assign ap_CS_fsm_state8 = ap_CS_fsm[7];
+assign ap_CS_fsm_state9 = ap_CS_fsm[8];
+assign ap_done = op_15_ap_vld;
+assign ap_ready = op_15_ap_vld;
+assign empty_fu_91_p1 = op_0[1:0];
+assign grp_fu_134_p0 = { op_6[7], op_6[7:3] };
+assign grp_fu_175_p0 = { select_ln850_1_reg_265, 2'h0 };
+assign grp_fu_175_p1 = { shl_ln781_reg_260[1], shl_ln781_reg_260[1], shl_ln781_reg_260[1], shl_ln781_reg_260[1], shl_ln781_reg_260[1:0], 2'h0 };
+assign grp_fu_198_p0 = { op_12_V_reg_280[5], op_12_V_reg_280 };
+assign grp_fu_198_p1 = { op_8[3], op_8[3], op_8[3], op_8 };
+assign grp_fu_208_p0 = { op_9[15], op_9 };
+assign grp_fu_217_p1 = { ret_V_4_reg_300[6], ret_V_4_reg_300[6], ret_V_4_reg_300[6], ret_V_4_reg_300[6], ret_V_4_reg_300[6], ret_V_4_reg_300[6], ret_V_4_reg_300[6], ret_V_4_reg_300[6], ret_V_4_reg_300[6], ret_V_4_reg_300[6], ret_V_4_reg_300 };
+assign op_15 = { grp_fu_217_p2[16], grp_fu_217_p2[16], grp_fu_217_p2[16], grp_fu_217_p2[16], grp_fu_217_p2[16], grp_fu_217_p2[16], grp_fu_217_p2[16], grp_fu_217_p2[16], grp_fu_217_p2[16], grp_fu_217_p2[16], grp_fu_217_p2[16], grp_fu_217_p2[16], grp_fu_217_p2[16], grp_fu_217_p2[16], grp_fu_217_p2[16], grp_fu_217_p2 };
+assign op_7_V_fu_159_p2 = { shl_ln781_reg_260[1:0], 2'h0 };
+assign p_Result_s_fu_140_p3 = op_6[7];
+assign ret_V_fu_110_p4 = op_6[7:3];
+assign sext_ln835_fu_120_p1 = { op_6[7], op_6[7:3] };
+assign trunc_ln851_fu_124_p1 = op_6[2:0];
+assign zext_ln9_fu_101_p1 = { 2'h0, r_reg_227 };
+assign \shl_4ns_2ns_4_7_1_U1.din1_cast  = \shl_4ns_2ns_4_7_1_U1.din1 [1:0];
+assign \shl_4ns_2ns_4_7_1_U1.din1_mask  = 2'h1;
+assign \shl_4ns_2ns_4_7_1_U1.ce  = 1'h1;
+assign \shl_4ns_2ns_4_7_1_U1.clk  = ap_clk;
+assign \shl_4ns_2ns_4_7_1_U1.din0  = { 2'h0, r_reg_227 };
+assign \shl_4ns_2ns_4_7_1_U1.din1  = { 2'h0, r_reg_227 };
+assign grp_fu_104_p2 = \shl_4ns_2ns_4_7_1_U1.dout ;
+assign \shl_4ns_2ns_4_7_1_U1.reset  = ap_rst;
+assign \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.ain_s0  = \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.a ;
+assign \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.bin_s0  = \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.b ;
+assign \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.s  = { \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.fas_s2 , \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.sum_s1  };
+assign \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.u2.a  = \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.ain_s1 ;
+assign \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.u2.b  = \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.bin_s1 ;
+assign \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.u2.cin  = \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.carry_s1 ;
+assign \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.facout_s2  = \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.u2.cout ;
+assign \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.fas_s2  = \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.u2.s ;
+assign \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.u1.a  = \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.a [3:0];
+assign \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.u1.b  = \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.b [3:0];
+assign \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.u1.cin  = 1'h0;
+assign \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.facout_s1  = \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.u1.cout ;
+assign \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.fas_s1  = \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.u1.s ;
+assign \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.a  = \add_8ns_8s_8_2_1_U3.din0 ;
+assign \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.b  = \add_8ns_8s_8_2_1_U3.din1 ;
+assign \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.ce  = \add_8ns_8s_8_2_1_U3.ce ;
+assign \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.clk  = \add_8ns_8s_8_2_1_U3.clk ;
+assign \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.reset  = \add_8ns_8s_8_2_1_U3.reset ;
+assign \add_8ns_8s_8_2_1_U3.dout  = \add_8ns_8s_8_2_1_U3.top_add_8ns_8s_8_2_1_Adder_1_U.s ;
+assign \add_8ns_8s_8_2_1_U3.ce  = 1'h1;
+assign \add_8ns_8s_8_2_1_U3.clk  = ap_clk;
+assign \add_8ns_8s_8_2_1_U3.din0  = { select_ln850_1_reg_265, 2'h0 };
+assign \add_8ns_8s_8_2_1_U3.din1  = { shl_ln781_reg_260[1], shl_ln781_reg_260[1], shl_ln781_reg_260[1], shl_ln781_reg_260[1], shl_ln781_reg_260[1:0], 2'h0 };
+assign grp_fu_175_p2 = \add_8ns_8s_8_2_1_U3.dout ;
+assign \add_8ns_8s_8_2_1_U3.reset  = ap_rst;
+assign \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.ain_s0  = \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.a ;
+assign \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.bin_s0  = \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.b ;
+assign \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.s  = { \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.fas_s2 , \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.sum_s1  };
+assign \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.u2.a  = \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.ain_s1 ;
+assign \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.u2.b  = \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.bin_s1 ;
+assign \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.u2.cin  = \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.carry_s1 ;
+assign \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.facout_s2  = \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.u2.cout ;
+assign \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.fas_s2  = \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.u2.s ;
+assign \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.u1.a  = \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.a [2:0];
+assign \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.u1.b  = \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.b [2:0];
+assign \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.u1.cin  = 1'h0;
+assign \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.facout_s1  = \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.u1.cout ;
+assign \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.fas_s1  = \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.u1.s ;
+assign \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.a  = \add_7s_7s_7_2_1_U4.din0 ;
+assign \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.b  = \add_7s_7s_7_2_1_U4.din1 ;
+assign \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.ce  = \add_7s_7s_7_2_1_U4.ce ;
+assign \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.clk  = \add_7s_7s_7_2_1_U4.clk ;
+assign \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.reset  = \add_7s_7s_7_2_1_U4.reset ;
+assign \add_7s_7s_7_2_1_U4.dout  = \add_7s_7s_7_2_1_U4.top_add_7s_7s_7_2_1_Adder_2_U.s ;
+assign \add_7s_7s_7_2_1_U4.ce  = 1'h1;
+assign \add_7s_7s_7_2_1_U4.clk  = ap_clk;
+assign \add_7s_7s_7_2_1_U4.din0  = { op_12_V_reg_280[5], op_12_V_reg_280 };
+assign \add_7s_7s_7_2_1_U4.din1  = { op_8[3], op_8[3], op_8[3], op_8 };
+assign grp_fu_198_p2 = \add_7s_7s_7_2_1_U4.dout ;
+assign \add_7s_7s_7_2_1_U4.reset  = ap_rst;
+assign \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.ain_s0  = \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.a ;
+assign \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.bin_s0  = \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.b ;
+assign \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.s  = { \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.fas_s2 , \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.sum_s1  };
+assign \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.u2.a  = \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.ain_s1 ;
+assign \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.u2.b  = \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.bin_s1 ;
+assign \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.u2.cin  = \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.carry_s1 ;
+assign \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.facout_s2  = \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.u2.cout ;
+assign \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.fas_s2  = \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.u2.s ;
+assign \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.u1.a  = \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.a [2:0];
+assign \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.u1.b  = \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.b [2:0];
+assign \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.u1.cin  = 1'h0;
+assign \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.facout_s1  = \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.u1.cout ;
+assign \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.fas_s1  = \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.u1.s ;
+assign \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.a  = \add_6s_6ns_6_2_1_U2.din0 ;
+assign \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.b  = \add_6s_6ns_6_2_1_U2.din1 ;
+assign \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.ce  = \add_6s_6ns_6_2_1_U2.ce ;
+assign \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.clk  = \add_6s_6ns_6_2_1_U2.clk ;
+assign \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.reset  = \add_6s_6ns_6_2_1_U2.reset ;
+assign \add_6s_6ns_6_2_1_U2.dout  = \add_6s_6ns_6_2_1_U2.top_add_6s_6ns_6_2_1_Adder_0_U.s ;
+assign \add_6s_6ns_6_2_1_U2.ce  = 1'h1;
+assign \add_6s_6ns_6_2_1_U2.clk  = ap_clk;
+assign \add_6s_6ns_6_2_1_U2.din0  = { op_6[7], op_6[7:3] };
+assign \add_6s_6ns_6_2_1_U2.din1  = 6'h01;
+assign grp_fu_134_p2 = \add_6s_6ns_6_2_1_U2.dout ;
+assign \add_6s_6ns_6_2_1_U2.reset  = ap_rst;
+assign \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.ain_s0  = \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.a ;
+assign \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.bin_s0  = \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.b ;
+assign \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.s  = { \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.fas_s2 , \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.sum_s1  };
+assign \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.u2.a  = \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.ain_s1 ;
+assign \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.u2.b  = \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.bin_s1 ;
+assign \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.u2.cin  = \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.carry_s1 ;
+assign \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.facout_s2  = \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.u2.cout ;
+assign \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.fas_s2  = \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.u2.s ;
+assign \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.u1.a  = \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.a [7:0];
+assign \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.u1.b  = \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.b [7:0];
+assign \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.u1.cin  = 1'h0;
+assign \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.facout_s1  = \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.u1.cout ;
+assign \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.fas_s1  = \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.u1.s ;
+assign \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.a  = \add_17s_17ns_17_2_1_U5.din0 ;
+assign \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.b  = \add_17s_17ns_17_2_1_U5.din1 ;
+assign \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.ce  = \add_17s_17ns_17_2_1_U5.ce ;
+assign \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.clk  = \add_17s_17ns_17_2_1_U5.clk ;
+assign \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.reset  = \add_17s_17ns_17_2_1_U5.reset ;
+assign \add_17s_17ns_17_2_1_U5.dout  = \add_17s_17ns_17_2_1_U5.top_add_17s_17ns_17_2_1_Adder_3_U.s ;
+assign \add_17s_17ns_17_2_1_U5.ce  = 1'h1;
+assign \add_17s_17ns_17_2_1_U5.clk  = ap_clk;
+assign \add_17s_17ns_17_2_1_U5.din0  = { op_9[15], op_9 };
+assign \add_17s_17ns_17_2_1_U5.din1  = 17'h00001;
+assign grp_fu_208_p2 = \add_17s_17ns_17_2_1_U5.dout ;
+assign \add_17s_17ns_17_2_1_U5.reset  = ap_rst;
+assign \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.ain_s0  = \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.a ;
+assign \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.bin_s0  = \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.b ;
+assign \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.s  = { \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.fas_s2 , \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.sum_s1  };
+assign \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.u2.a  = \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.ain_s1 ;
+assign \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.u2.b  = \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.bin_s1 ;
+assign \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.u2.cin  = \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.carry_s1 ;
+assign \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.facout_s2  = \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.u2.cout ;
+assign \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.fas_s2  = \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.u2.s ;
+assign \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.u1.a  = \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.a [7:0];
+assign \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.u1.b  = \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.b [7:0];
+assign \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.u1.cin  = 1'h0;
+assign \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.facout_s1  = \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.u1.cout ;
+assign \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.fas_s1  = \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.u1.s ;
+assign \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.a  = \add_17ns_17s_17_2_1_U6.din0 ;
+assign \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.b  = \add_17ns_17s_17_2_1_U6.din1 ;
+assign \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.ce  = \add_17ns_17s_17_2_1_U6.ce ;
+assign \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.clk  = \add_17ns_17s_17_2_1_U6.clk ;
+assign \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.reset  = \add_17ns_17s_17_2_1_U6.reset ;
+assign \add_17ns_17s_17_2_1_U6.dout  = \add_17ns_17s_17_2_1_U6.top_add_17ns_17s_17_2_1_Adder_4_U.s ;
+assign \add_17ns_17s_17_2_1_U6.ce  = 1'h1;
+assign \add_17ns_17s_17_2_1_U6.clk  = ap_clk;
+assign \add_17ns_17s_17_2_1_U6.din0  = add_ln69_reg_305;
+assign \add_17ns_17s_17_2_1_U6.din1  = { ret_V_4_reg_300[6], ret_V_4_reg_300[6], ret_V_4_reg_300[6], ret_V_4_reg_300[6], ret_V_4_reg_300[6], ret_V_4_reg_300[6], ret_V_4_reg_300[6], ret_V_4_reg_300[6], ret_V_4_reg_300[6], ret_V_4_reg_300[6], ret_V_4_reg_300 };
+assign grp_fu_217_p2 = \add_17ns_17s_17_2_1_U6.dout ;
+assign \add_17ns_17s_17_2_1_U6.reset  = ap_rst;
+endmodule
+
+
+// Machine B:
+// Processed by function `add_clk_enable_signal` in `verilog_tricks.py`.
+// Processed by function `remove_reset_signal` in `verilog_tricks.py`.
+module top_B (
+  ap_clk,
+  ap_start,
+  ap_done,
+  ap_idle,
+  ap_ready,
+  op_0,
+  op_3,
+  op_6,
+  op_8,
+  op_9,
+  op_15,
+  op_15_ap_vld,
+clk_enable
+);
+input clk_enable;
+
+
+input ap_clk;
+wire ap_rst;
+assign ap_rst = op_15_ap_vld;
+input ap_start;
+input [3:0] op_0;
+input [3:0] op_3;
+input [7:0] op_6;
+input [3:0] op_8;
+input [15:0] op_9;
+output ap_done;
+output ap_idle;
+output ap_ready;
+output [31:0] op_15;
+output op_15_ap_vld;
+
+
+reg [3:0] ap_CS_fsm = 4'h1;
+reg icmp_ln851_reg_246;
+reg [5:0] op_12_V_reg_256;
+reg [3:0] op_7_V_reg_235;
+reg [5:0] ret_V_1_reg_251;
+reg [6:0] ret_V_4_reg_261;
+reg [5:0] sext_ln835_reg_240;
+wire [3:0] _00_;
+wire _01_;
+wire [5:0] _02_;
+wire [1:0] _03_;
+wire [5:0] _04_;
+wire [6:0] _05_;
+wire [5:0] _06_;
+wire [1:0] _07_;
+wire _08_;
+wire _09_;
+wire _10_;
+wire _11_;
+wire _12_;
+wire _13_;
+wire _14_;
+wire _15_;
+wire [16:0] add_ln69_1_fu_219_p2;
+wire [16:0] add_ln69_fu_213_p2;
+wire ap_CS_fsm_state1;
+wire ap_CS_fsm_state2;
+wire ap_CS_fsm_state3;
+wire ap_CS_fsm_state4;
+wire [3:0] ap_NS_fsm;
+wire ap_clk;
+wire ap_done;
+wire ap_idle;
+wire ap_ready;
+wire ap_rst;
+wire ap_start;
+wire [1:0] empty_fu_91_p1;
+wire icmp_ln851_fu_135_p2;
+wire [3:0] op_0;
+wire [31:0] op_15;
+wire op_15_ap_vld;
+wire [3:0] op_3;
+wire [7:0] op_6;
+wire [3:0] op_7_V_fu_111_p2;
+wire [3:0] op_8;
+wire [15:0] op_9;
+wire p_Result_s_fu_147_p3;
+wire [7:0] p_Val2_s_fu_177_p2;
+wire [1:0] r_fu_95_p2;
+wire [5:0] ret_V_1_fu_141_p2;
+wire [6:0] ret_V_4_fu_200_p2;
+wire [4:0] ret_V_fu_117_p4;
+wire [7:0] rhs_fu_169_p3;
+wire [5:0] select_ln850_1_fu_162_p3;
+wire [5:0] select_ln850_fu_157_p3;
+wire [6:0] sext_ln1192_1_fu_196_p1;
+wire [16:0] sext_ln1192_2_fu_206_p1;
+wire [7:0] sext_ln1192_fu_154_p1;
+wire [6:0] sext_ln16_fu_193_p1;
+wire [16:0] sext_ln69_fu_209_p1;
+wire [5:0] sext_ln835_fu_127_p1;
+wire [1:0] shl_ln781_fu_105_p2;
+wire [2:0] trunc_ln851_fu_131_p1;
+wire [3:0] zext_ln9_fu_101_p1;
+
+
+assign add_ln69_1_fu_219_p2 = $signed(add_ln69_fu_213_p2) + $signed(ret_V_4_reg_261);
+assign add_ln69_fu_213_p2 = $signed(op_9) + $signed(2'h1);
+assign p_Val2_s_fu_177_p2 = $signed({ select_ln850_1_fu_162_p3, 2'h0 }) + $signed(op_7_V_reg_235);
+assign ret_V_1_fu_141_p2 = $signed(op_6[7:3]) + $signed(2'h1);
+assign ret_V_4_fu_200_p2 = $signed(op_12_V_reg_256) + $signed(op_8);
+assign _08_ = _10_ & ap_CS_fsm[0];
+assign _09_ = ap_start & ap_CS_fsm[0];
+assign r_fu_95_p2 = ~ op_0[1:0];
+assign _10_ = ~ ap_start;
+assign _11_ = ! op_6[2:0];
+always @(posedge ap_clk)
+op_7_V_reg_235[1:0] <= 2'h0;
+always @(posedge ap_clk)
+ret_V_4_reg_261 <= _05_;
+always @(posedge ap_clk)
+op_12_V_reg_256 <= _02_;
+always @(posedge ap_clk)
+op_7_V_reg_235[3:2] <= _03_;
+always @(posedge ap_clk)
+sext_ln835_reg_240 <= _06_;
+always @(posedge ap_clk)
+icmp_ln851_reg_246 <= _01_;
+always @(posedge ap_clk)
+ret_V_1_reg_251 <= _04_;
+always @(posedge ap_clk)
+ap_CS_fsm <= _00_;
+assign _07_ = _09_ ? 2'h2 : 2'h1;
+assign _12_ = ap_CS_fsm == 1'h1;
+function [3:0] _36_;
+input [3:0] a;
+input [15:0] b;
+input [3:0] s;
+case (s)
+4'b0001:
+_36_ = b[3:0];
+4'b0010:
+_36_ = b[7:4];
+4'b0100:
+_36_ = b[11:8];
+4'b1000:
+_36_ = b[15:12];
+4'b0000:
+_36_ = a;
+default:
+_36_ = 4'bx;
+endcase
+endfunction
+assign ap_NS_fsm = _36_(4'hx, { 2'h0, _07_, 12'h481 }, { _12_, _15_, _14_, _13_ });
+assign _13_ = ap_CS_fsm == 4'h8;
+assign _14_ = ap_CS_fsm == 3'h4;
+assign _15_ = ap_CS_fsm == 2'h2;
+assign op_15_ap_vld = ap_CS_fsm[3] ? 1'h1 : 1'h0;
+assign ap_idle = _08_ ? 1'h1 : 1'h0;
+assign _05_ = ap_CS_fsm[2] ? ret_V_4_fu_200_p2 : ret_V_4_reg_261;
+assign _02_ = ap_CS_fsm[1] ? p_Val2_s_fu_177_p2[7:2] : op_12_V_reg_256;
+assign _04_ = ap_CS_fsm[0] ? ret_V_1_fu_141_p2 : ret_V_1_reg_251;
+assign _01_ = ap_CS_fsm[0] ? icmp_ln851_fu_135_p2 : icmp_ln851_reg_246;
+assign _06_ = ap_CS_fsm[0] ? { op_6[7], op_6[7:3] } : sext_ln835_reg_240;
+assign _03_ = ap_CS_fsm[0] ? shl_ln781_fu_105_p2 : op_7_V_reg_235[3:2];
+assign _00_ = ap_rst ? 4'h1 : ap_NS_fsm;
+assign shl_ln781_fu_105_p2 = r_fu_95_p2 << r_fu_95_p2;
+assign icmp_ln851_fu_135_p2 = _11_ ? 1'h1 : 1'h0;
+assign select_ln850_1_fu_162_p3 = op_6[7] ? select_ln850_fu_157_p3 : sext_ln835_reg_240;
+assign select_ln850_fu_157_p3 = icmp_ln851_reg_246 ? sext_ln835_reg_240 : ret_V_1_reg_251;
+assign ap_CS_fsm_state1 = ap_CS_fsm[0];
+assign ap_CS_fsm_state2 = ap_CS_fsm[1];
+assign ap_CS_fsm_state3 = ap_CS_fsm[2];
+assign ap_CS_fsm_state4 = ap_CS_fsm[3];
+assign ap_done = op_15_ap_vld;
+assign ap_ready = op_15_ap_vld;
+assign empty_fu_91_p1 = op_0[1:0];
+assign op_15 = { add_ln69_1_fu_219_p2[16], add_ln69_1_fu_219_p2[16], add_ln69_1_fu_219_p2[16], add_ln69_1_fu_219_p2[16], add_ln69_1_fu_219_p2[16], add_ln69_1_fu_219_p2[16], add_ln69_1_fu_219_p2[16], add_ln69_1_fu_219_p2[16], add_ln69_1_fu_219_p2[16], add_ln69_1_fu_219_p2[16], add_ln69_1_fu_219_p2[16], add_ln69_1_fu_219_p2[16], add_ln69_1_fu_219_p2[16], add_ln69_1_fu_219_p2[16], add_ln69_1_fu_219_p2[16], add_ln69_1_fu_219_p2 };
+assign op_7_V_fu_111_p2 = { shl_ln781_fu_105_p2, 2'h0 };
+assign p_Result_s_fu_147_p3 = op_6[7];
+assign ret_V_fu_117_p4 = op_6[7:3];
+assign rhs_fu_169_p3 = { select_ln850_1_fu_162_p3, 2'h0 };
+assign sext_ln1192_1_fu_196_p1 = { op_8[3], op_8[3], op_8[3], op_8 };
+assign sext_ln1192_2_fu_206_p1 = { ret_V_4_reg_261[6], ret_V_4_reg_261[6], ret_V_4_reg_261[6], ret_V_4_reg_261[6], ret_V_4_reg_261[6], ret_V_4_reg_261[6], ret_V_4_reg_261[6], ret_V_4_reg_261[6], ret_V_4_reg_261[6], ret_V_4_reg_261[6], ret_V_4_reg_261 };
+assign sext_ln1192_fu_154_p1 = { op_7_V_reg_235[3], op_7_V_reg_235[3], op_7_V_reg_235[3], op_7_V_reg_235[3], op_7_V_reg_235 };
+assign sext_ln16_fu_193_p1 = { op_12_V_reg_256[5], op_12_V_reg_256 };
+assign sext_ln69_fu_209_p1 = { op_9[15], op_9 };
+assign sext_ln835_fu_127_p1 = { op_6[7], op_6[7:3] };
+assign trunc_ln851_fu_131_p1 = op_6[2:0];
+assign zext_ln9_fu_101_p1 = { 2'h0, r_fu_95_p2 };
+endmodule
+
+
+// Product machine:
+module top_A_times_top_B (ap_start, op_0, op_3, op_6, op_8, op_9, ap_clk, unsafe_signal);
+input ap_start;
+input [3:0] op_0;
+input [3:0] op_3;
+input [7:0] op_6;
+input [3:0] op_8;
+input [15:0] op_9;
+input ap_clk;
+output unsafe_signal;
+reg _setup;
+initial _setup = 1'b0;
+always @ (posedge ap_clk) _setup <= 1'b1;
+reg ap_start_internal;
+always @ (posedge ap_clk) if (!_setup) ap_start_internal <= ap_start;
+reg [3:0] op_0_internal;
+always @ (posedge ap_clk) if (!_setup) op_0_internal <= op_0;
+reg [3:0] op_3_internal;
+always @ (posedge ap_clk) if (!_setup) op_3_internal <= op_3;
+reg [7:0] op_6_internal;
+always @ (posedge ap_clk) if (!_setup) op_6_internal <= op_6;
+reg [3:0] op_8_internal;
+always @ (posedge ap_clk) if (!_setup) op_8_internal <= op_8;
+reg [15:0] op_9_internal;
+always @ (posedge ap_clk) if (!_setup) op_9_internal <= op_9;
+wire ap_done_A;
+wire ap_done_B;
+wire ap_done_eq;
+assign ap_done_eq = ap_done_A == ap_done_B;
+wire ap_idle_A;
+wire ap_idle_B;
+wire ap_idle_eq;
+assign ap_idle_eq = ap_idle_A == ap_idle_B;
+wire ap_ready_A;
+wire ap_ready_B;
+wire ap_ready_eq;
+assign ap_ready_eq = ap_ready_A == ap_ready_B;
+wire [31:0] op_15_A;
+wire [31:0] op_15_B;
+wire op_15_eq;
+assign op_15_eq = op_15_A == op_15_B;
+wire op_15_ap_vld_A;
+wire op_15_ap_vld_B;
+wire clk_enable_A;
+wire clk_enable_B;
+assign clk_enable_A = _setup & (~op_15_ap_vld_A | op_15_ap_vld_B);
+assign clk_enable_B = _setup;
+wire divergent;
+assign divergent = ~(ap_done_eq & ap_idle_eq & ap_ready_eq & op_15_eq);
+assign unsafe_signal = op_15_ap_vld_A & op_15_ap_vld_B & divergent;
+top_A instance_A (
+    .ap_clk(ap_clk),
+    .clk_enable(clk_enable_A),
+    .ap_start(ap_start_internal),
+    .op_0(op_0_internal),
+    .op_3(op_3_internal),
+    .op_6(op_6_internal),
+    .op_8(op_8_internal),
+    .op_9(op_9_internal),
+    .ap_done(ap_done_A),
+    .ap_idle(ap_idle_A),
+    .ap_ready(ap_ready_A),
+    .op_15(op_15_A),
+    .op_15_ap_vld(op_15_ap_vld_A)
+);
+top_B instance_B (
+    .ap_clk(ap_clk),
+    .clk_enable(clk_enable_B),
+    .ap_start(ap_start_internal),
+    .op_0(op_0_internal),
+    .op_3(op_3_internal),
+    .op_6(op_6_internal),
+    .op_8(op_8_internal),
+    .op_9(op_9_internal),
+    .ap_done(ap_done_B),
+    .ap_idle(ap_idle_B),
+    .ap_ready(ap_ready_B),
+    .op_15(op_15_B),
+    .op_15_ap_vld(op_15_ap_vld_B)
+);
+endmodule
